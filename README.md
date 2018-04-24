@@ -38,26 +38,35 @@ public class HelloWorld {
     public static void main(String[] args) {
         var router = new Router((ctx, req) -> {
             ctx.html("Hello, World");  // 纯文本html
-        }).handler("/hello.json", (ctx, req) -> {
+        })
+		.handler("/hello.json", (ctx, req) -> {
             ctx.json(new String[] { "Hello", "World" });  // JSON API
-        }).handler("/hello", (ctx, req) -> {
+        })
+		.handler("/hello", (ctx, req) -> {
             var res = new HashMap<String, Object>();
             res.put("req", req);
             ctx.render("playground.ftl", res);  // 模版渲染
-        }).handler("/world", (ctx, re) -> {
+        })
+		.handler("/world", (ctx, re) -> {
             ctx.redirect("/hello");  // 302重定向
-        }).child("/user", () -> {   // 路由嵌套
+        })
+		.resource("/pub", "/static")  // 静态资源
+		.child("/user", () -> {   // 路由嵌套
             return new Router((ctx, req) -> {
                 ctx.html("Hello, World");
-            }).handler("/hello.json", (ctx, req) -> {
+            })
+			.handler("/hello.json", (ctx, req) -> {
                 ctx.json(new String[] { "Hello", "World" });
-            }).handler("/hello", (ctx, req) -> {
+            })
+			.handler("/hello", (ctx, req) -> {
                 var res = new HashMap<String, Object>();
                 res.put("req", req);
                 ctx.render("playground.ftl", res);
-            }).handler("/world", (ctx, re) -> {
+            })
+			.handler("/world", (ctx, re) -> {
                 ctx.redirect("/hello");
-            }).filter((ctx, req, before) -> {  // 请求过滤器、拦截器
+            })
+			.filter((ctx, req, before) -> {  // 请求过滤器、拦截器
                 if (before) {
                     System.out.printf("before %s\n", req.path());
                 } else {
@@ -65,7 +74,7 @@ public class HelloWorld {
                 }
                 return true;
             });
-        }).resource("/pub", "/static");  // 静态资源
+        });
 
         var rd = new KidsRequestDispatcher("/kids", router);
         rd.templateRoot("/tpl");  // 模版classpath目录
