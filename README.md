@@ -19,9 +19,10 @@ public class HelloWorld {
     }
 
 }
+
+http://localhost:8080/kids
 ```
 
-try open http://localhost:8080/kids
 
 FullStack
 --
@@ -81,22 +82,15 @@ public class HelloWorld {
     }
 
 }
-```
 
 http://localhost:8080/kids
-
 http://localhost:8080/kids/hello
-
 http://localhost:8080/kids/hello.json
-
 http://localhost:8080/kids/world
-
 http://localhost:8080/kids/user
-
 http://localhost:8080/kids/user/hello
-
 http://localhost:8080/kids/user/hello.json
-
 http://localhost:8080/kids/user/world
-
 http://localhost:8080/kids/pub/bootstrap.min.css
+```
+
