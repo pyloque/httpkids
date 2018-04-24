@@ -37,17 +37,17 @@ public class HelloWorld {
 
     public static void main(String[] args) {
         var router = new Router((ctx, req) -> {
-            ctx.html("Hello, World");
-        }).handler("/hello.json", (ctx, req) -> {
-            ctx.json(new String[] { "Hello", "World" });
+            ctx.html("Hello, World");  // 纯文本html
+        }).handler("/hello.json", (ctx, req) -> {
+            ctx.json(new String[] { "Hello", "World" });  // JSON API
         }).handler("/hello", (ctx, req) -> {
             var res = new HashMap<String, Object>();
             res.put("req", req);
-            ctx.render("playground.ftl", res);
-        }).handler("/world", (ctx, re) -> {
-            ctx.redirect("/hello");
-        }).child("/user", () -> {
-            return new Router((ctx, req) -> {
+            ctx.render("playground.ftl", res);  // 模版渲染
+        }).handler("/world", (ctx, re) -> {
+            ctx.redirect("/hello");  // 302重定向
+        }).child("/user", () -> {   // 路由嵌套
+            return new Router((ctx, req) -> {
                 ctx.html("Hello, World");
             }).handler("/hello.json", (ctx, req) -> {
                 ctx.json(new String[] { "Hello", "World" });
@@ -57,26 +57,27 @@ public class HelloWorld {
                 ctx.render("playground.ftl", res);
             }).handler("/world", (ctx, re) -> {
                 ctx.redirect("/hello");
-            }).filter((ctx, req, before) -> {
-                if (before) {
+            }).filter((ctx, req, before) -> {  // 请求过滤器、拦截器
+                if (before) {
                     System.out.printf("before %s\n", req.path());
                 } else {
                     System.out.printf("after %s\n", req.path());
                 }
                 return true;
             });
-        }).resource("/pub", "/static");
+        }).resource("/pub", "/static");  // 静态资源
 
         var rd = new KidsRequestDispatcher("/kids", router);
-        rd.templateRoot("/tpl");
+        rd.templateRoot("/tpl");  // 模版classpath目录
 
         var server = new HttpServer("localhost", 8080, 2, 16, rd);
         server.start();
+        
         Runtime.getRuntime().addShutdownHook(new Thread() {
 
             public void run() {
-                server.stop();
-            }
+                server.stop();  // 优雅停机
+            }
 
         });
     }
