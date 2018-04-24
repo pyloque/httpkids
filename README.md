@@ -1,6 +1,6 @@
 httpkids
 --
-http server based on netty for kids
+web framework based on netty for kids, java10 required!
 
 HelloWorld
 --
