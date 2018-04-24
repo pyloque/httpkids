@@ -94,3 +94,7 @@ http://localhost:8080/kids/user/world
 http://localhost:8080/kids/pub/bootstrap.min.css
 ```
 
+Discussion
+--
+关注公众号「码洞」，我们一起来聊聊这个框架
+
