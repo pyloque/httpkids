@@ -85,11 +85,11 @@ public class HelloWorld {
 		
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 
-            public void run() {
-            	server.stop();  // 优雅停机
-            }
+			public void run() {
+				server.stop(); // 优雅停机
+			}
 
-        });
+		});		
 	}
 
 }
