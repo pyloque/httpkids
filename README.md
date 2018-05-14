@@ -1,14 +1,14 @@
 httpkids
 --
-web framework based on netty for kids, java10 required!
+Web framework based on netty for kids, java10 required!
 
 Features & Disadvantages
 --
-1. Extremly lightweight compared with other web frameworks 
-2. Extremly easy to use, Extermly low cost for learning
-3. Extremly easy to understand, With approximately 1200 lines of code
-4. No support for https yet
-5. No support for URL with restful style
+1. Extremely lightweight compared with other web frameworks.
+2. Extremely easy to use, Extermly low cost for learning.
+3. Extremely easy to understand, With approximately 1200 lines of code.
+4. No support for https yet.
+5. No support for URL with restful style.
 
 HelloWorld
 --
