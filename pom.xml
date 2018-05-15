@@ -6,7 +6,7 @@
 	<artifactId>httpkids</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>ormkids</name>
+	<name>httpkids</name>
 	<url>http://maven.apache.org</url>
 	<description>Lightweight Web framework for Java base on Netty</description>
 
